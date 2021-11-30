@@ -52,14 +52,14 @@ Shader "URP_Samples/Dither"
 			{
 				float4 positionOS       : POSITION;
 				float3 normalOS         : NORMAL;
-			    float4 tangentOS        : TANGENT;
+				float4 tangentOS        : TANGENT;
 				float2 uv               : TEXCOORD0;
 			};
 
 			struct Varyings
 			{
 				float2 uv         : TEXCOORD0;
-			    float3 normalWS   : TEXCOORD1;
+				float3 normalWS   : TEXCOORD1;
 				float  fogCoord   : TEXCOORD2;
 				float4 positionCS : SV_POSITION;
 
@@ -77,7 +77,7 @@ Shader "URP_Samples/Dither"
 				output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
 
 				VertexNormalInputs normalInput = GetVertexNormalInputs(input.normalOS);
-			    output.normalWS = normalInput.normalWS;
+				output.normalWS = normalInput.normalWS;
 
 				return output;
 			}

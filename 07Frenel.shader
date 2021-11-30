@@ -47,14 +47,14 @@ Shader "URP_Samples/Frenel"
 			{
 				float4 positionOS       : POSITION;
 				float3 normalOS         : NORMAL;
-			    float4 tangentOS        : TANGENT;
+				float4 tangentOS        : TANGENT;
 				float2 uv               : TEXCOORD0;
 			};
 
 			struct Varyings
 			{
 				float2 uv         : TEXCOORD0;
-			    float3 normalWS   : TEXCOORD1;
+				float3 normalWS   : TEXCOORD1;
 				float3 viewDirWS  : TEXCOORD2;
 				float  fogCoord   : TEXCOORD3;
 				float4 positionCS : SV_POSITION;
@@ -72,10 +72,10 @@ Shader "URP_Samples/Frenel"
 				output.positionCS = vertexInput.positionCS;
 				output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
 				output.fogCoord = ComputeFogFactor(vertexInput.positionCS.z);
-    			output.viewDirWS = GetWorldSpaceViewDir(vertexInput.positionWS);
+				output.viewDirWS = GetWorldSpaceViewDir(vertexInput.positionWS);
 
 				VertexNormalInputs normalInput = GetVertexNormalInputs(input.normalOS);
-			    output.normalWS = normalInput.normalWS;
+				output.normalWS = normalInput.normalWS;
 
 				return output;
 			}

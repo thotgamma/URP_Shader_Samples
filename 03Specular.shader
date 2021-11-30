@@ -47,7 +47,7 @@ Shader "URP_Samples/Specular"
 			{
 				float4 positionOS       : POSITION;
 				float3 normalOS         : NORMAL;
-			    float4 tangentOS        : TANGENT;
+				float4 tangentOS        : TANGENT;
 				float2 uv               : TEXCOORD0;
 			};
 
@@ -55,7 +55,7 @@ Shader "URP_Samples/Specular"
 			{
 				float2 uv         : TEXCOORD0;
 				float3 positionWS : TEXCOORD1;
-			    float3 normalWS   : TEXCOORD2;
+				float3 normalWS   : TEXCOORD2;
 				float3 viewDirWS  : TEXCOORD3;
 				float  fogCoord   : TEXCOORD4;
 				float4 positionCS : SV_POSITION;
@@ -71,13 +71,13 @@ Shader "URP_Samples/Specular"
 
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
 				output.positionCS = vertexInput.positionCS;
-			    output.positionWS = vertexInput.positionWS;
+				output.positionWS = vertexInput.positionWS;
 				output.uv = TRANSFORM_TEX(input.uv, _BaseMap);
 				output.fogCoord = ComputeFogFactor(vertexInput.positionCS.z);
-    			output.viewDirWS = GetWorldSpaceViewDir(vertexInput.positionWS);
+				output.viewDirWS = GetWorldSpaceViewDir(vertexInput.positionWS);
 
 				VertexNormalInputs normalInput = GetVertexNormalInputs(input.normalOS);
-			    output.normalWS = normalInput.normalWS;
+				output.normalWS = normalInput.normalWS;
 
 				return output;
 			}

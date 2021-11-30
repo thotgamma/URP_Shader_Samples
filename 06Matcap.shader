@@ -47,14 +47,14 @@ Shader "URP_Samples/Matcap"
 			{
 				float4 positionOS       : POSITION;
 				float3 normalOS         : NORMAL;
-			    float4 tangentOS        : TANGENT;
+				float4 tangentOS        : TANGENT;
 				float2 uv               : TEXCOORD0;
 			};
 
 			struct Varyings
 			{
 				float2 uv         : TEXCOORD0;
-			    float3 normalWS   : TEXCOORD1;
+				float3 normalWS   : TEXCOORD1;
 				float3 viewDirWS  : TEXCOORD2;
 				float  fogCoord   : TEXCOORD3;
 				float4 positionCS : SV_POSITION;
@@ -71,10 +71,10 @@ Shader "URP_Samples/Matcap"
 				VertexPositionInputs vertexInput = GetVertexPositionInputs(input.positionOS.xyz);
 				output.positionCS = vertexInput.positionCS;
 				output.fogCoord = ComputeFogFactor(vertexInput.positionCS.z);
-    			output.viewDirWS = GetWorldSpaceViewDir(vertexInput.positionWS);
+				output.viewDirWS = GetWorldSpaceViewDir(vertexInput.positionWS);
 
 				VertexNormalInputs normalInput = GetVertexNormalInputs(input.normalOS);
-			    output.normalWS = normalInput.normalWS;
+				output.normalWS = normalInput.normalWS;
 
 				output.uv = TransformWorldToViewDir(normalInput.normalWS).xy;
 				output.uv = output.uv * 0.5 + 0.5;
